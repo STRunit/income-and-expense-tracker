@@ -27,8 +27,8 @@ app.get("/", async (req, res) => {
   let tableQueryText = `
   CREATE TABLE "users" (
    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+   name VARCHAR(50) NOT NULL,
    email VARCHAR(50) UNIQUE NOT NULL,
-    name VARCHAR(50) NOT NULL,
     password TEXT,
     avatar_img TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -45,17 +45,17 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/users/create", async (req, res) => {
-  const { email, name, password, avatar_img, currency_type } = req.body;
+  const { name, email, password, avatar_img, currency_type } = req.body;
 
   const queryText = `
-  INSERT INTO users (email, name, password, avatar_img, currency_type)
+  INSERT INTO users (name, email, password, avatar_img, currency_type)
   VALUES($1, $2, $3, $4, $5) RETURNING *;
   `;
 
   try {
     await db.query(queryText, [
-      email,
       name,
+      email,
       password,
       avatar_img,
       currency_type,
@@ -79,27 +79,26 @@ app.get("/users", async (req, res) => {
   }
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hello Mother Father");
+app.put("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
 
-// });
+  try {
+    const result = await db.query(
+      "UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING *",
+      [name, email, id]
+    );
 
-// app.post("/write", (req, res) => {
-//   const { body } = req;
-//   const data = new Uint8Array(Buffer.from(JSON.stringify(body)));
-
-//   fs.writeFile("./DATA.txt", data, "utf8", (err, data) => {
-//     console.log(err, data);
-//   });
-
-//   res.send("success!");
-// });
-
-// app.get("/read", (req, res) => {
-//   fs.readFile("./DATA.txt", "utf8", (err, data) => {
-//     res.send(data);
-//   });
-// });
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: "User not found" });
+    } else {
+      res.status(200).json(result.rows[0]);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Backend listening on port ${port}`);
