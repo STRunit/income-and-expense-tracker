@@ -10,11 +10,30 @@ const port = 8000;
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get("/installExtension", async (req, res) => {
+  const tableQueryText = `CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  db.query(tableQueryText);
+  try {
+    await db.query(tableQueryText);
+  } catch (error) {
+    console.error(error);
+  }
+  res.send("extension installed successfully");
+});
+
+// CREATE TYPE currency_type AS ENUM ('MNT','USD');
+
 app.get("/", async (req, res) => {
   let tableQueryText = `
-    CREATE TABLE IF NOT EXISTS "users" (
-      name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) UNIQUE
+  CREATE TABLE "users" (
+   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+   email VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    password TEXT,
+    avatar_img TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    currency_type TEXT DEFAULT 'MNT, USD' NOT NULL
     )`;
 
   try {
@@ -25,21 +44,29 @@ app.get("/", async (req, res) => {
   res.send("table created succesfully");
 });
 
-app.get("/createUsers", async (req, res) => {
+app.post("/users/create", async (req, res) => {
+  const { email, name, password, avatar_img, currency_type } = req.body;
+
   const queryText = `
-  INSERT INTO users (name, email)
-  VALUES('Shijre', 'st21unit@gmail.com');
+  INSERT INTO users (email, name, password, avatar_img, currency_type)
+  VALUES($1, $2, $3, $4, $5) RETURNING *;
   `;
 
   try {
-    await db.query(queryText);
+    await db.query(queryText, [
+      email,
+      name,
+      password,
+      avatar_img,
+      currency_type,
+    ]);
   } catch (error) {
     console.log(error);
   }
   res.send("user inserted succesfully");
 });
 
-app.get("/getUsers", async (req, res) => {
+app.get("/users", async (req, res) => {
   const queryText = `
   SELECT * FROM users
   `;
