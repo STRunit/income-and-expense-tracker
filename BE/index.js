@@ -23,6 +23,8 @@ app.get("/installExtension", async (req, res) => {
 
 // CREATE TYPE currency_type AS ENUM ('MNT','USD');
 
+// USER TABLE
+
 app.get("/", async (req, res) => {
   let tableQueryText = `
   CREATE TABLE "users" (
@@ -63,7 +65,7 @@ app.post("/users/create", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  res.send("user inserted succesfully");
+  res.send("user created succesfully");
 });
 
 app.get("/users", async (req, res) => {
@@ -94,6 +96,115 @@ app.put("/users/:id", async (req, res) => {
     } else {
       res.status(200).json(result.rows[0]);
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await db.query("DELETE FROM users WHERE id = $1", [id]);
+
+    res.send("user deleted");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// RECORD TABLE
+
+app.get("/record", async (req, res) => {
+  let tableQueryText = `
+  CREATE TABLE "record" (
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id TEXT,
+    name TEXT,
+    amount REAL NOT NULL,
+    transaction_type TEXT DEFAULT 'INC, EXP' NOT NULL,
+    description TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    category_id TEXT
+    )`;
+
+  try {
+    await db.query(tableQueryText);
+  } catch (error) {
+    console.error(error);
+  }
+  res.send("record table created succesfully");
+});
+
+app.post("/record/create", async (req, res) => {
+  const { user_id, name, amount, transaction_type, description, category_id } =
+    req.body;
+
+  const queryText = `
+  INSERT INTO record (user_id, name, amount, transaction_type, description, category_id)
+  VALUES($1, $2, $3, $4, $5, $6) RETURNING *;
+  `;
+
+  try {
+    await db.query(queryText, [
+      user_id,
+      name,
+      amount,
+      transaction_type,
+      description,
+      category_id,
+    ]);
+  } catch (error) {
+    console.log(error);
+  }
+  res.send("record user created succesfully");
+});
+
+app.get("/record/get", async (req, res) => {
+  const queryText = `
+  SELECT * FROM record
+  `;
+
+  try {
+    const result = await db.query(queryText);
+    res.send(result.rows);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.put("/record/:id", async (req, res) => {
+  const { id } = req.params;
+  const { user_id, name, amount, transaction_type, description, category_id } =
+    req.body;
+
+  try {
+    const result = await db.query(
+      "UPDATE record SET user_id = $1, name = $2, amount = $3, transaction_type = $4, description = $5, category_id = $6 WHERE id = $7 RETURNING *",
+      [user_id, name, amount, transaction_type, description, category_id, id]
+    );
+
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: "Record not found" });
+    } else {
+      res.status(200).json(result.rows[0]);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+app.delete("/record/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await db.query("DELETE FROM record WHERE id = $1", [id]);
+
+    res.send("record user deleted");
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Database error" });
