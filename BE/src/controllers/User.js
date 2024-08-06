@@ -1,21 +1,16 @@
 import { db } from "../../db.js";
+import { user } from "../routers/user.js";
 
 export const createUser = async (req, res) => {
-  const { name, email, password, avatar_img, currency_type } = req.body;
+  const { name, email, password, avatar_img } = req.body;
 
   const queryText = `
-    INSERT INTO "user" (name, email, password, avatar_img, currency_type)
+    INSERT INTO "user" (name, email, password, avatar_img)
     VALUES($1, $2, $3, $4, $5) RETURNING *;
     `;
 
   try {
-    await db.query(queryText, [
-      name,
-      email,
-      password,
-      avatar_img,
-      currency_type,
-    ]);
+    await db.query(queryText, [name, email, password, avatar_img]);
   } catch (error) {
     console.log(error);
   }
@@ -43,6 +38,20 @@ export const getUser = async (req, res) => {
   try {
     const result = await db.query(queryText, [id]);
     res.send(result.rows);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserEmail = async (req, res) => {
+  const { email } = req.body;
+
+  const queryText = `
+    SELECT email, password FROM "user" WHERE email = $1
+    `;
+  try {
+    const result = await db.query(queryText, [email]);
+    return result.rows;
   } catch (error) {
     console.log(error);
   }

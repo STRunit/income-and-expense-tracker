@@ -6,6 +6,7 @@ import { db } from "./db.js";
 import { user } from "./src/routers/user.js";
 import { record } from "./src/routers/record.js";
 import { category } from "./src/routers/category.js";
+import { auth } from "./src/routers/Auth.js";
 
 const app = express();
 const port = 8000;
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/user", user);
 app.use("/record", record);
 app.use("/category", category);
+app.use("/api", auth);
 
 // EXTENSION
 
@@ -41,7 +43,7 @@ app.get("/usertable", async (req, res) => {
     avatar_img TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    currency_type TEXT DEFAULT 'MNT, USD' NOT NULL
+    currency_type currency_type DEFAULT 'MNT'
     )`;
 
   try {
@@ -56,16 +58,20 @@ app.get("/usertable", async (req, res) => {
 
 app.get("/recordtable", async (req, res) => {
   let tableQueryText = `
-  CREATE TABLE "record" (
+ CREATE TABLE "record" (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id TEXT,
+    user_id uuid NOT NULL,
+    category_id uuid NOT NULL,
+    FOREIGN KEY (user_id)
+    references user(id),
+    FOREIGN KEY (category_id)
+    references category(id),
     name TEXT,
     amount REAL NOT NULL,
-    transaction_type TEXT DEFAULT 'INC, EXP' NOT NULL,
+    transaction_type transaction_type DEFAULT 'EXP' NOT NULL,
     description TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    category_id TEXT
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )`;
 
   try {
