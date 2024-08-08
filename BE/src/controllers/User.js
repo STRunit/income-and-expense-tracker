@@ -1,20 +1,32 @@
 import { db } from "../../db.js";
-import { user } from "../routers/user.js";
+import bcrypt from "bcrypt";
 
 export const createUser = async (req, res) => {
-  const { name, email, password, avatar_img } = req.body;
+  const { name, email, password, avatar_img, currency_type } = req.body;
 
   const queryText = `
-    INSERT INTO "user" (name, email, password, avatar_img)
+    INSERT INTO "user" (name, email, password, avatar_img, currency_type)
     VALUES($1, $2, $3, $4, $5) RETURNING *;
     `;
+  const saltRounds = 12;
+  // const myPlaintextPassword = "s0//P4$$w0rD";
+  // const someOtherPlaintextPassword = "not_bacon";
 
-  try {
-    await db.query(queryText, [name, email, password, avatar_img]);
-  } catch (error) {
-    console.log(error);
-  }
-  res.send("user created succesfully");
+  bcrypt.hash(password, saltRounds, async (err, hash) => {
+    try {
+      const result = await db.query(queryText, [
+        name,
+        email,
+        hash,
+        avatar_img,
+        currency_type,
+      ]);
+      res.status(201).json(result.rows[0]);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Database Error" });
+    }
+  });
 };
 
 export const getUsers = async (req, res) => {
@@ -30,28 +42,14 @@ export const getUsers = async (req, res) => {
 };
 
 export const getUser = async (req, res) => {
-  const { id } = req.params;
-
-  const queryText = `
-    SELECT * FROM "user" WHERE id = $1
-    `;
-  try {
-    const result = await db.query(queryText, [id]);
-    res.send(result.rows);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getUserEmail = async (req, res) => {
   const { email } = req.body;
 
   const queryText = `
-    SELECT email, password FROM "user" WHERE email = $1
+    SELECT * FROM "user" WHERE email = $1
     `;
   try {
     const result = await db.query(queryText, [email]);
-    return result.rows;
+    res.send(result.rows);
   } catch (error) {
     console.log(error);
   }
