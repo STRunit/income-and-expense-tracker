@@ -49,9 +49,10 @@ export const getUser = async (req, res) => {
     `;
   try {
     const result = await db.query(queryText, [email]);
-    res.send(result.rows);
+    return res.send(result.rows[0]);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    return res.send(error);
   }
 };
 

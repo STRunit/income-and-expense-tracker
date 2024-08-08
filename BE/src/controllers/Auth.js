@@ -1,6 +1,7 @@
 import { createUser, getUser } from "./user.js";
 import { user } from "../routers/user.js";
 import bcrypt from "bcrypt";
+import { db } from "../../db.js";
 
 export const signUp = async (req, res) => {
   try {
@@ -14,13 +15,18 @@ export const signUp = async (req, res) => {
 
 export const signIn = async (req, res) => {
   const { password, email } = req.body;
-  try {
-    const user = await getUser(req, res);
-    console.log(password, user[0].password);
 
-    bcrypt.compare(password, user[0].password, (err, result) => {
+  try {
+    const { email } = req.body;
+    const queryText = `
+      SELECT * FROM "user" WHERE email = $1
+      `;
+
+    const user = await db.query(queryText, [email]);
+
+    await bcrypt.compare(password, user.rows[0].password, (err, result) => {
       if (result) {
-        res.send({ success: true, user: user });
+        res.send({ success: true, user: user.rows[0] });
       } else {
         res.send({ error: "Invalid email or password" });
       }
