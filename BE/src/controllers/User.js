@@ -21,10 +21,10 @@ export const createUser = async (req, res) => {
         avatar_img,
         currency_type,
       ]);
-      res.status(201).json(result.rows[0]);
+      return res.status(201).json(result.rows[0]);
     } catch (err) {
       console.error(err);
-      res.status(500).json({ error: "Database Error" });
+      return res.status(500).json({ error: "Database Error" });
     }
   });
 };
