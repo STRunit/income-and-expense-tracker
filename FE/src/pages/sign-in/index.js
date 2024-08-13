@@ -10,9 +10,11 @@ export default function SignIn() {
         <Form
           header="Welcome Back"
           paragraph="Welcome back, Please enter your details"
-          inputContainer={
-            ((<Input placeholder="Email" />),
-            (<Input placeholder="Password" />))
+          Input={
+            <>
+              <Input placeholder="Email" />
+              <Input placeholder="Password" />
+            </>
           }
           buttonLabel="Log In"
           accountStatus="Don’t have account?"
