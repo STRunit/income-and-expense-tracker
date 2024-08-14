@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { MoneyIcon } from "./icon/moneyIcon";
 
 import {
@@ -7,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@radix-ui/react-select";
+} from "@/components/ui/select";
 
 const data = {
   title: "Select base currency",
@@ -17,22 +16,22 @@ const data = {
 
 const Currency = () => {
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6 w-[384px]">
       <div className="flex flex-col items-center gap-4">
-        <Image src={MoneyIcon} />
+        <MoneyIcon />
         <div className="text-2xl font-semibold">{data.title}</div>
       </div>
       <Select>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[384px h-[64px]">
           <SelectValue placeholder="MNT-Mongolian Tugrik" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="MNT">MNT-Mongolian Tugrik</SelectItem>
           <SelectItem value="USD">USD-American Dollar</SelectItem>
-          <SelectItem value="JPY">JPY-Japanese Yen</SelectItem>
         </SelectContent>
       </Select>
-      <p>{data.paragraph}</p>
+
+      <p className="text-xs text-[#475569] mb-8">{data.paragraph}</p>
     </div>
   );
 };
