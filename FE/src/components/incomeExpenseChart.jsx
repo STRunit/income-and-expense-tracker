@@ -55,7 +55,7 @@ const chartConfig = {
 
 export const IncomeExpenseChart = () => {
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+    <ChartContainer config={chartConfig} className="h-[180px] w-[550px]">
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis
@@ -66,8 +66,18 @@ export const IncomeExpenseChart = () => {
           tickFormatter={(value) => value.slice(0, 3)}
         />
         <YAxis />
-        <Bar dataKey="income" fill="var(--color-income)" radius={4} />
-        <Bar dataKey="expense" fill="var(--color-expense)" radius={4} />
+        <Bar
+          dataKey="income"
+          fill="var(--color-income)"
+          radius={[8, 8, 0, 0]}
+          barSize={16}
+        />
+        <Bar
+          dataKey="expense"
+          fill="var(--color-expense)"
+          radius={[8, 8, 0, 0]}
+          barSize={16}
+        />
       </BarChart>
     </ChartContainer>
   );
