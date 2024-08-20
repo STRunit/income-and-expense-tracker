@@ -1,12 +1,13 @@
 import { createUser, getUser } from "./user.js";
-import { user } from "../routers/user.js";
 import bcrypt from "bcrypt";
 import { db } from "../../db.js";
 
 export const signUp = async (req, res) => {
   try {
-    await createUser(req, res);
-    res.status(200).json({ success: true, user: user });
+    const user = await createUser(req, res);
+    console.log(user,'user');
+    
+    return res.status(200).json({ success: true, user: user });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Database error" });
@@ -21,7 +22,6 @@ export const signIn = async (req, res) => {
     const queryText = `
       SELECT * FROM "user" WHERE email = $1
       `;
-
     const user = await db.query(queryText, [email]);
 
     await bcrypt.compare(password, user.rows[0].password, (err, result) => {

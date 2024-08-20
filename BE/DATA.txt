@@ -1,1 +1,0 @@
-{"email":"test2@gmail.com","name":"admin","password":"password","password1":"password","email1":"test2@gmail.com1","name1":"admin1","password2":"password1","password3":"password1"}

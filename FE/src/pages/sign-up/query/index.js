@@ -44,6 +44,7 @@ const Query = () => {
                 <div className="flex items-center">
                   <p
                     className={`${
+                      
                       currentIndex >= index ? styles.loaded : styles.primary
                     }`}
                     key={index}

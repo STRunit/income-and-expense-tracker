@@ -9,8 +9,6 @@ export const createUser = async (req, res) => {
     VALUES($1, $2, $3, $4, $5) RETURNING *;
     `;
   const saltRounds = 12;
-  // const myPlaintextPassword = "s0//P4$$w0rD";
-  // const someOtherPlaintextPassword = "not_bacon";
 
   bcrypt.hash(password, saltRounds, async (err, hash) => {
     try {

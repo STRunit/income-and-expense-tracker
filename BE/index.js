@@ -4,7 +4,7 @@ import fs from "node:fs";
 import cors from "cors";
 import { db } from "./db.js";
 import { user } from "./src/routers/user.js";
-import { record } from "./src/routers/record.js";
+import { record } from "./src/routers/Record.js";
 import { category } from "./src/routers/category.js";
 import { auth } from "./src/routers/Auth.js";
 
@@ -16,7 +16,7 @@ app.use(cors());
 app.use("/user", user);
 app.use("/record", record);
 app.use("/category", category);
-app.use("/api", auth);
+app.use("/auth", auth);
 
 // EXTENSION
 
