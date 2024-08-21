@@ -3,7 +3,7 @@ import express from "express";
 import fs from "node:fs";
 import cors from "cors";
 import { db } from "./db.js";
-import { user } from "./src/routers/user.js";
+import { user } from "./src/routers/User.js";
 import { record } from "./src/routers/Record.js";
 import { category } from "./src/routers/category.js";
 import { auth } from "./src/routers/Auth.js";

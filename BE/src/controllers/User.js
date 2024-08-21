@@ -43,14 +43,13 @@ export const getUser = async (req, res) => {
   const { email } = req.body;
 
   const queryText = `
-    SELECT * FROM "user" WHERE email = $1
+    SELECT * FROM user WHERE email = $1
     `;
   try {
     const result = await db.query(queryText, [email]);
-    return res.send(result.rows[0]);
+    res.send(result.rows);
   } catch (error) {
-    // console.log(error);
-    return res.send(error);
+    console.log(error);
   }
 };
 

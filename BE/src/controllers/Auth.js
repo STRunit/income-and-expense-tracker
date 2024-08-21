@@ -1,4 +1,4 @@
-import { createUser, getUser } from "./user.js";
+import { createUser, getUsers } from "./User.js";
 import bcrypt from "bcrypt";
 import { db } from "../../db.js";
 
@@ -15,14 +15,10 @@ export const signUp = async (req, res) => {
 };
 
 export const signIn = async (req, res) => {
-  const { password, email } = req.body;
-
+  
+  const { email, password} = req.body;
   try {
-    const { email } = req.body;
-    const queryText = `
-      SELECT * FROM "user" WHERE email = $1
-      `;
-    const user = await db.query(queryText, [email]);
+  const user = await getUsers(req, res);
 
     await bcrypt.compare(password, user.rows[0].password, (err, result) => {
       if (result) {
