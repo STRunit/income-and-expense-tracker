@@ -3,11 +3,15 @@ import bcrypt from "bcrypt";
 import { db } from "../../db.js";
 
 export const signUp = async (req, res) => {
+  const queryText = `
+    SELECT * FROM "user"
+    `;
+    const {password, email} = req.body
   try {
-    const user = await createUser(req, res);
-    console.log(user,'user');
-    
-    return res.status(200).json({ success: true, user: user });
+    const user = await db.query(queryText, [password, email])
+    if(password === user.password){
+      return res.status(200).json({ success: true, user: user });
+    }
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Database error" });

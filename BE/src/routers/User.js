@@ -1,22 +1,22 @@
-// import express from "express";
-// import {
-//   createUser,
-//   deleteUser,
-//   getUsers,
-//   getUser,
-//   updateUser,
-// } from "../controllers/User.js";
+import express from "express";
+import {
+  createUser,
+  deleteUser,
+  getUsers,
+  getUser,
+  updateUser,
+} from "../controllers/User.js";
 
-// const user = express.Router();
+const user = express.Router();
 
-// user
-//   .get("/", getUsers)
-//   .get("/:id", getUser)
-//   .post("/create", createUser)
-//   .put("/:id", updateUser)
-//   .delete("/:id", deleteUser);
+user
+  .get("/", getUsers)
+  .get("/:id", getUser)
+  .post("/create", createUser)
+  .put("/:id", updateUser)
+  .delete("/:id", deleteUser);
 
-// export { user };
+export { user };
 
 import _ from "lodash"
 
@@ -43,14 +43,14 @@ const mockData = [
   },
 ] 
 
-const result = _.groupBy(mockData, (data) => data.userId);
+// const result = _.groupBy(mockData, (data) => data.userId);
 
-_.map(result, (user) => {
-  console.log(user);
+// _.map(result, (user) => {
+//   console.log(user);
   
-})
+// })
 
 
-console.log(result);
-console.log(user);
+// console.log(result);
+// console.log(user);
 
