@@ -10,7 +10,7 @@ export const FinanceCard = ({
   return (
     <div className="w-[384px] flex flex-col items-start rounded-xl bg-white">
       <div className="flex items-center self-stretch gap-2 p-4 border-b-[1px]">
-        <div className={`w-2 h-2 rounded-full bg-[${dotColor}]`}></div>
+        <div className={`w-2 h-2 rounded-full ` + dotColor}></div>
         <p className="font-semibold">{label}</p>
       </div>
       <div className="flex flex-col items-start self-stretch gap-4 px-6 pt-5 pb-6">
