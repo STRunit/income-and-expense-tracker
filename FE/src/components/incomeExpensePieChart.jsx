@@ -77,30 +77,30 @@ export const IncomeExpensePieChart = () => {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-             
-             <ChartLegend 
-             verticalAlign="middle"
-             align="right"
-             layout="vertical"
-
-             content={<ChartLegendContent 
-             className="rounded-full"
-                nameKey="categoryname"
-             />}
-              className="flex flex-col items-start gap-4"
-              />
-              
             <Pie
               data={chartData}
               dataKey="amount"
               nameKey="category"
               innerRadius={50}
             />
+
+            <ChartLegend
+              verticalAlign="middle"
+              align="right"
+              layout="vertical"
+              className="flex flex-col items-start gap-7 pt-0"
+
+              content={<ChartLegendContent
+                className="rounded-full"
+                nameKey="category"
+              />}
+            />
+
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <div className="flex flex-col items-start gap-4 w-[300px] my-auto">
-        {/* {chartData.map((el, i) => {
+      <div className="flex flex-col items-start gap-5 w-[300px] my-auto">
+        {chartData.map((el, i) => {
           return (
             <div className="flex items-center justify-between self-stretch text-sm text-[#111827]">
               <div className="flex items-center w-1/3 gap-2">
@@ -114,7 +114,7 @@ export const IncomeExpensePieChart = () => {
               <p className="flex justify-end w-1/3">15.50%</p>
             </div>
           );
-        })} */}
+        })}
       </div>
     </Card>
   );
