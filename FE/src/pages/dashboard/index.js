@@ -52,7 +52,7 @@ const Dashboard = () => {
       <div className="flex gap-6 mt-8">
         <Card cashAmount="21,000,00" />
         <FinanceCard
-          dotColor="#84CC16"
+          dotColor="bg-[#84CC16]"
           label="Your Income"
           amount="1,200,000"
           currency="₮"
@@ -61,7 +61,7 @@ const Dashboard = () => {
           fromLastMonth="32%"
         />
         <FinanceCard
-          dotColor="#0166FF"
+          dotColor="bg-[#0166FF]"
           label="Total Expenses"
           amount="-1,200,000"
           currency="₮"
