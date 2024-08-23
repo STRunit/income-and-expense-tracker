@@ -4,6 +4,8 @@ import { Radio } from "./icon/radio";
 import { TrailingIcon } from "./icon/trailingIcon";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { Slider } from "@/components/ui/slider"
+
 
 const Categories = [
   "Food & Drinks",
@@ -21,7 +23,7 @@ const Categories = [
 
 export const Record = () => {
   return (
-    <div className="inline-flex p-6 flex-col items-start gap-6 rounded-xl border-solid border-[1px] border-[#E5E7EB]">
+    <div className="inline-flex p-6 flex-col items-start gap-6 rounded-xl border-solid border-[1px] border-[#E5E7EB] mt-6">
       <div className="flex flex-col items-start self-stretch gap-6">
         <h3 className="text-2xl font-semibold">Records</h3>
         <Button className="flex items-center self-stretch justify-center h-8 gap-1 bg-[#0166FF] rounded-[20px]">
@@ -96,7 +98,9 @@ export const Record = () => {
             <Input className="w-[120px] flex flex-col items-center justify-center rounded-lg border-[1px] border-solid border-[#D1D5DB] bg-[#F3F4F6]" />
             <Input className="w-[120px] flex flex-col items-center justify-center rounded-lg border-[1px] border-solid border-[#D1D5DB] bg-[#F3F4F6]" />
           </div>
-          <div className="flex w-[245px] items-start content-start gap-[189px] flex-wrap"></div>
+          <div className="flex w-[245px] items-start content-start gap-[189px] flex-wrap">
+          <Slider defaultValue={[0]} max={100000} step={50}/>
+          </div>
         </div>
       </div>
     </div>
