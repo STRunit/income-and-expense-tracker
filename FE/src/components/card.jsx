@@ -11,7 +11,7 @@ export const Card = ({ cashAmount }) => {
         {" "}
         <Shape />
       </div>
-      <Image src={Noise} className="absolute top-0 left-0 z-10 rounded-2xl" />
+      <Image src={Noise} alt="" className="absolute top-0 left-0 z-10 rounded-2xl" />
       <div className="flex flex-col justify-between h-full">
         <div className="z-30">
           <Logo textColor="white" logoColor="white" />
