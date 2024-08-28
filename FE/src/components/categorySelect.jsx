@@ -79,9 +79,8 @@ export const CategorySelect = ({ className }) => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Categories</SelectLabel>
           {Categories.map((category, index) => {
-            return <SelectItem key={index} icon={category.icon} value={category.name}>{category.name}</SelectItem>
+            return <SelectItem key={index} icon={category.icon} value={category.name} className={index === 0 ? "border-b-[1px]" : "border-b-none"}>{category.name}</SelectItem>
           })}
         </SelectGroup>
       </SelectContent>
