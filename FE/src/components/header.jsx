@@ -19,8 +19,16 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { DatePicker } from "./datePicker";
 import { CategorySelect } from "./categorySelect";
 import { Textarea } from "./ui/textarea";
+import { useState } from "react";
 
 export const Header = () => {
+
+  const [isClicked, setIsClicked] = useState(false)
+
+  const clickHandler = () => {
+    setIsClicked(!isClicked)
+  }
+
   return (
     <div className="flex px-[120px] w-full h-fit justify-between py-4 bg-white">
       <div className="flex items-center gap-6">
@@ -47,8 +55,8 @@ export const Header = () => {
             <div className="flex flex-start self-stretch">
               <div className="flex px-6 py-6 flex-col items-start gap-5 w-1/2">
                 <div className="w-full">
-                  <Button className="bg-[#0166FF] rounded-[20px] w-1/2">Expense</Button>
-                  <Button className="bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2">Income</Button>
+                  <Button onClick={clickHandler} className={isClicked ? "bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2" :"bg-[#0166FF] rounded-[20px] w-1/2"}>Expense</Button>
+                  <Button onClick={clickHandler} className={isClicked ? "bg-[#16A34A] rounded-[20px] w-1/2" :"bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2"}>Income</Button>
                 </div>
                 <div className="flex flex-col gap-[32px] w-full">
                   <div className="flex flex-col items-start gap-12 self-stretch">
@@ -65,7 +73,7 @@ export const Header = () => {
                       <DatePicker/>
                     </div>
                   </div>
-                  <Button type="submit" className="bg-[#0166FF] rounded-[20px]">Add Record</Button>
+                  <Button type="submit" className={isClicked ? "bg-[#16A34A] rounded-[20px]" : "bg-[#0166FF] rounded-[20px]"}>Add Record</Button>
                 </div>
               </div>
               <div className="flex py-6 px-6 flex-col items-start gap-5 w-1/2">
@@ -84,7 +92,7 @@ export const Header = () => {
             </div>
           </DialogContent>
         </Dialog>
-        <Image className="rounded-full" src={Avatar} width={40} height={40} />
+        <Image alt="" className="rounded-full" src={Avatar} width={40} height={40} />
       </div>
     </div>
   );
