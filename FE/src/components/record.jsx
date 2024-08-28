@@ -67,7 +67,7 @@ export const Record = () => {
         <div className="flex flex-col items-start self-stretch gap-2">
           {Categories.map((category, index) => {
             return (
-              <div className="flex items-center self-stretch justify-between">
+              <div className="flex items-center self-stretch justify-between" key={index}>
                 <Button
                   variant="ghost"
                   className="flex items-center justify-center h-8 gap-2"
