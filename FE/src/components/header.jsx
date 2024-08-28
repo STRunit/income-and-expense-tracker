@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LeadingIcon } from "./icon/leadingIcon";
+import { PlusIcon } from "./icon/plusIcon";
 import Logo from "./icon/logo";
 import Avatar from "../components/icon/avatar.jpg";
 
@@ -41,7 +41,7 @@ export const Header = () => {
         <Dialog>
           <DialogTrigger asChild>
             <Button className="bg-[#0166FF] justify-center items-center rounded-[20px] flex gap-1 h-8">
-              <LeadingIcon />
+              <PlusIcon />
               Record
             </Button>
           </DialogTrigger>

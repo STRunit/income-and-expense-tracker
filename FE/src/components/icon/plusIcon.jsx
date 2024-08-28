@@ -1,4 +1,4 @@
-export const LeadingIcon = ({ color = "white" }) => {
+export const PlusIcon = ({ color = "white" }) => {
   return (
     <svg
       width="20"

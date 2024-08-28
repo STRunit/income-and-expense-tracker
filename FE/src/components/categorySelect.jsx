@@ -9,8 +9,69 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { HomeIcon } from "./icon/homeIcon"
+import { PlusIcon } from "./icon/plusIcon";
+import { FoodIcon } from "./icon/foodIcon";
+import { ShoppingIcon } from "./icon/shoppingIcon";
+import { BusIcon, LifeBuoyIcon, PcCaseIcon } from "lucide-react";
+import { TaxiIcon } from "./icon/taxiIcon";
+import { BalanceIcon } from "./icon/balanceIcon";
+import { MoneyIcon } from "./icon/moneyIcon";
+import { GiftIcon } from "./icon/giftIcon";
 
-export const CategorySelect = ({className}) => {
+const Categories = [
+  {
+    name: "Add Category",
+    icon: <PlusIcon color="blue" />,
+  },
+  {
+    name: "Food & Drinks",
+    icon: <FoodIcon />,
+  },
+  {
+    name: "Shopping",
+    icon: <ShoppingIcon />,
+  },
+  {
+    name: "Housing",
+    icon: <HomeIcon />,
+  },
+  {
+    name: "Transportation",
+    icon: <BusIcon color="red" />,
+  },
+  {
+    name: "Vehicle",
+    icon: <TaxiIcon />,
+  },
+  {
+    name: "Life & Entertainment",
+    icon: <LifeBuoyIcon color="brown" />,
+  },
+  {
+    name: "Communication, PC",
+    icon: <PcCaseIcon color="cyan" />,
+  },
+  {
+    name: "Financial expenses",
+    icon: <BalanceIcon />,
+  },
+  {
+    name: "Investments",
+    icon: <MoneyIcon />,
+  },
+  {
+    name: "Income",
+    icon: <MoneyIcon />,
+  },
+  {
+    name: "Others",
+    icon: <GiftIcon />,
+  },
+];
+
+
+export const CategorySelect = ({ className }) => {
   return (
     <Select>
       <SelectTrigger className={className}>
@@ -19,17 +80,9 @@ export const CategorySelect = ({className}) => {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Categories</SelectLabel>
-          <SelectItem value="food & drinks">Food & Drinks</SelectItem>
-          <SelectItem value="shopping">Shopping</SelectItem>
-          <SelectItem value="housing">Housing</SelectItem>
-          <SelectItem value="transportation">Transportation</SelectItem>
-          <SelectItem value="vehicle">Vehicle</SelectItem>
-          <SelectItem value="life & entertainment">Life & Entertainment</SelectItem>
-          <SelectItem value="communication, pc">Communication, PC</SelectItem>
-          <SelectItem value="financial expenses">Financial expenses</SelectItem>
-          <SelectItem value="investments">Investments</SelectItem>
-          <SelectItem value="income">Income</SelectItem>
-          <SelectItem value="others">Others</SelectItem>
+          {Categories.map((category, index) => {
+            return <SelectItem key={index} icon={category.icon} value={category.name}>{category.name}</SelectItem>
+          })}
         </SelectGroup>
       </SelectContent>
     </Select>

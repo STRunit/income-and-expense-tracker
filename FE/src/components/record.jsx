@@ -1,5 +1,5 @@
 import { EyeIcon } from "./icon/eyeIcon";
-import { LeadingIcon } from "./icon/leadingIcon";
+import { PlusIcon } from "./icon/plusIcon";
 import { Radio } from "./icon/radio";
 import { TrailingIcon } from "./icon/trailingIcon";
 import { Button } from "./ui/button";
@@ -27,7 +27,7 @@ export const Record = () => {
       <div className="flex flex-col items-start self-stretch gap-6">
         <h3 className="text-2xl font-semibold">Records</h3>
         <Button className="flex items-center self-stretch justify-center h-8 gap-1 bg-[#0166FF] rounded-[20px]">
-          <LeadingIcon />
+          <PlusIcon />
           Add
         </Button>
       </div>
@@ -85,7 +85,7 @@ export const Record = () => {
               variant="ghost"
               className="flex items-center self-stretch justify-center h-8 gap-1 rounded-[20px]"
             >
-              <LeadingIcon color="#0166FF" />
+              <PlusIcon color="#0166FF" />
               Add Category
             </Button>
           </div>
