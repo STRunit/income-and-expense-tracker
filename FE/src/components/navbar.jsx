@@ -21,7 +21,7 @@ import { CategorySelect } from "./categorySelect";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 
-export const Header = () => {
+export const Navbar = () => {
 
   const [isClicked, setIsClicked] = useState(false)
 

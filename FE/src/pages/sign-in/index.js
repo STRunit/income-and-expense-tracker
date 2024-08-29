@@ -1,11 +1,11 @@
 import Form from "@/components/form";
 import { Input } from "@/components/ui/input";
-import { BasicLayout } from "@/layout/layout";
+import { DefaultLayout } from "@/layout";
 import Link from "next/link";
 
 export default function SignIn() {
   return (
-    <BasicLayout>
+    <div className="flex h-screen">
       <div className="flex items-center justify-center w-1/2">
         <Form
           header="Welcome Back"
@@ -22,6 +22,6 @@ export default function SignIn() {
         />
       </div>
       <div className="w-1/2 bg-[#0166FF]"></div>
-    </BasicLayout>
+    </div>
   );
 }

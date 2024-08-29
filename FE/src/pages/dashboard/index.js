@@ -6,7 +6,7 @@ import { HomeIcon } from "@/components/icon/homeIcon";
 import { IncreasingIcon } from "@/components/icon/increasingIcon";
 import { IncomeExpenseChart } from "@/components/incomeExpenseChart";
 import { IncomeExpensePieChart } from "@/components/incomeExpensePieChart";
-import { DashboardLayout } from "@/layout/dashboardLayout";
+import { DefaultLayout } from "@/layout";
 
 const dataRecords = [
   {
@@ -48,8 +48,8 @@ const dataRecords = [
 
 const Dashboard = () => {
   return (
-    <DashboardLayout>
-      <div className="flex gap-6 mt-8">
+    <div>
+      <div className="flex gap-6 mt-8 justify-center">
         <Card cashAmount="21,000,00" />
         <FinanceCard
           dotColor="bg-[#84CC16]"
@@ -70,7 +70,7 @@ const Dashboard = () => {
           fromLastMonth="43%"
         />
       </div>
-      <div className="flex gap-6 mt-6">
+      <div className="flex gap-6 mt-6 justify-center">
         <div className="flex w-[588px] h-[284px] flex-col items-start shrink-0 bg-white rounded-xl">
           <div className="flex items-center self-stretch gap-2 p-4 border-b-[1px]">
             <p className="text-base font-semibold">Income-Expense</p>
@@ -89,7 +89,7 @@ const Dashboard = () => {
           <IncomeExpensePieChart />
         </div>
       </div>
-      <div className="flex w-[1200px] flex-col items-start rounded-xl bg-white mt-6">
+      <div className="flex w-[1200px] flex-col items-start rounded-xl bg-white mt-6 m-auto">
         <div className="flex items-center self-stretch gap-2 p-4 font-semibold">
           <p>Last Records</p>
         </div>
@@ -117,7 +117,7 @@ const Dashboard = () => {
           );
         })}
       </div>
-    </DashboardLayout>
+    </div>
   );
 };
 

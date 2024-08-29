@@ -3,12 +3,12 @@ import { HomeIcon } from "@/components/icon/homeIcon";
 import { Record } from "@/components/record";
 import { RecordDetails } from "@/components/recordDetails";
 import { Checkbox } from "@/components/ui/checkbox";
-import { DashboardLayout } from "@/layout/dashboardLayout";
+import { DefaultLayout } from "@/layout";
 
 const Records = () => {
   return (
-    <DashboardLayout>
-      <div className="flex gap-6">
+    <>
+      <div className="flex gap-6 justify-center">
         <Record />
         <div className="flex flex-col gap-6 w-[894px] mt-6">
           <div className="flex items-center justify-between w-full">
@@ -60,7 +60,7 @@ const Records = () => {
           </div>
         </div>
       </div>
-    </DashboardLayout >
+    </ >
   );
 };
 

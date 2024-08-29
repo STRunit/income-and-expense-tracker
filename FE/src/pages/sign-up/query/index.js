@@ -3,7 +3,7 @@ import Currency from "@/components/currency";
 import { Finish } from "@/components/finish";
 import Logo from "@/components/icon/logo";
 import { Button } from "@/components/ui/button";
-import { BasicLayout } from "@/layout/layout";
+import { DefaultLayout } from "@/layout";
 import { useState } from "react";
 
 const stepper = [
@@ -34,7 +34,7 @@ const Query = () => {
     setCurrentIndex(currentIndex + 1);
   };
   return (
-    <BasicLayout>
+    <>
       <div className="flex flex-col items-center pt-10 gap-[141px]">
         <div className="flex flex-col items-center gap-12">
           <Logo />
@@ -79,7 +79,7 @@ const Query = () => {
           </Button>
         </div>
       </div>
-    </BasicLayout>
+    </>
   );
 };
 
