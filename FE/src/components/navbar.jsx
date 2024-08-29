@@ -25,8 +25,6 @@ import { DialogContext } from "@/pages/_app";
 export const Navbar = () => {
 
   const { recordBtnRef } = useContext(DialogContext)
-
-
   const [isClicked, setIsClicked] = useState(false)
 
   const clickHandler = () => {

@@ -18,6 +18,8 @@ import { TaxiIcon } from "./icon/taxiIcon";
 import { BalanceIcon } from "./icon/balanceIcon";
 import { MoneyIcon } from "./icon/moneyIcon";
 import { GiftIcon } from "./icon/giftIcon";
+import { DialogContext } from "@/pages/_app";
+import { useContext } from "react";
 
 const Categories = [
   {
@@ -72,6 +74,13 @@ const Categories = [
 
 
 export const CategorySelect = ({ className }) => {
+
+  const { categoryBtnRef } = useContext(DialogContext)
+
+  const categoryBtnHandler = () => {
+    categoryBtnRef.current.click()
+  }
+
   return (
     <Select>
       <SelectTrigger className={className}>
