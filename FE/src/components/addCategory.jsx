@@ -21,42 +21,8 @@ import {
 } from "@/components/ui/select"
 
 import {
-    House, HouseLine, IdentificationBadge,
-    IdentificationCard
-    , Ladder
-    , IntersectSquare
-    , ImageSquare
-    , MagnifyingGlassPlus
-    , Microphone
-    , MicrosoftExcelLogo
-    , Notepad
-    , ListPlus
-    , Leaf
-    , NumberFive
-    , NumberCircleSeven
-    , RoadHorizon
-    , HourglassSimpleMedium
-    , AnchorSimple
-    , BezierCurve
-    , Exclude
-    , Vignette
-    , Baseball
-    , Question
-    , Exam
-    , Watch
-    , GlobeSimple
-    , OrangeSlice
-    , Peace
-    , ToiletPaper
-    , Pencil
-    , BlueCircle
-    , SkyBlueCircle
-    , GreenCircle
-    , YellowCircle
-    , OrangeCircle
-    , PurpleCircle
-    , RedCircle
-} from "./icon/add-category-icons/house";
+    House, HouseLine, IdentificationBadge, IdentificationCard, Ladder, IntersectSquare, ImageSquare, MagnifyingGlassPlus, Microphone, MicrosoftExcelLogo, Notepad, ListPlus, Leaf, NumberFive, NumberCircleSeven, RoadHorizon, HourglassSimpleMedium, AnchorSimple, BezierCurve, Exclude, Vignette, Baseball, Question, Exam, Watch, GlobeSimple, OrangeSlice, Peace, ToiletPaper, Pencil, BlueCircle, SkyBlueCircle, GreenCircle, YellowCircle, OrangeCircle, PurpleCircle, RedCircle
+} from "./icon/add-category-icons";
 
 import { Button } from "./ui/button";
 import { PlusIcon } from "./icon/plusIcon";

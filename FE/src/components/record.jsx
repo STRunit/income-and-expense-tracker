@@ -1,14 +1,15 @@
 import { EyeIcon } from "./icon/eyeIcon";
-import { PlusIcon } from "./icon/plusIcon";
 import { Radio } from "./icon/radio";
 import { TrailingIcon } from "./icon/trailingIcon";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+
 import { Slider } from "@/components/ui/slider"
 
 import { useContext } from "react";
 import { DialogContext } from "@/pages/_app";
 import { AddCategory } from "./addCategory";
+import { PlusIcon } from "./icon/plusIcon";
+import { Input } from "./ui/input";
 
 const Categories = [
   "Food & Drinks",
