@@ -65,6 +65,8 @@ import { YellowCircle } from "./icon/add-category-icons/yellowCircle";
 import { OrangeCircle } from "./icon/add-category-icons/orangeCircle";
 import { PurpleCircle } from "./icon/add-category-icons/purpleCircle";
 import { RedCircle } from "./icon/add-category-icons/redCircle";
+import { useContext } from "react";
+import { DialogContext } from "@/pages/_app";
 
 
 
@@ -237,11 +239,18 @@ const CategoryColorPicker = [
 ]
 
 export const Record = () => {
+
+  const { recordBtnRef } = useContext(DialogContext)
+
+  const recordBtnHandler = () => {
+    recordBtnRef.current.click()
+   }
+
   return (
     <div className="inline-flex p-6 flex-col items-start gap-6 rounded-xl border-solid border-[1px] border-[#E5E7EB] mt-6">
       <div className="flex flex-col items-start self-stretch gap-6">
         <h3 className="text-2xl font-semibold">Records</h3>
-        <Button className="flex items-center self-stretch justify-center h-8 gap-1 bg-[#0166FF] rounded-[20px]">
+        <Button onClick={recordBtnHandler} ref={recordBtnRef} className="flex items-center self-stretch justify-center h-8 gap-1 bg-[#0166FF] rounded-[20px]">
           <PlusIcon />
           Add
         </Button>

@@ -3,7 +3,6 @@ import { HomeIcon } from "@/components/icon/homeIcon";
 import { Record } from "@/components/record";
 import { RecordDetails } from "@/components/recordDetails";
 import { Checkbox } from "@/components/ui/checkbox";
-import { DefaultLayout } from "@/layout";
 
 const Records = () => {
   return (

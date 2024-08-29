@@ -6,7 +6,6 @@ import { HomeIcon } from "@/components/icon/homeIcon";
 import { IncreasingIcon } from "@/components/icon/increasingIcon";
 import { IncomeExpenseChart } from "@/components/incomeExpenseChart";
 import { IncomeExpensePieChart } from "@/components/incomeExpensePieChart";
-import { DefaultLayout } from "@/layout";
 
 const dataRecords = [
   {

@@ -19,15 +19,20 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { DatePicker } from "./datePicker";
 import { CategorySelect } from "./categorySelect";
 import { Textarea } from "./ui/textarea";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DialogContext } from "@/pages/_app";
 
 export const Navbar = () => {
+
+  const { recordBtnRef } = useContext(DialogContext)
+
 
   const [isClicked, setIsClicked] = useState(false)
 
   const clickHandler = () => {
     setIsClicked(!isClicked)
   }
+
 
   return (
     <div className="flex px-[120px] w-full h-fit justify-between py-4 bg-white">
@@ -40,7 +45,7 @@ export const Navbar = () => {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-[#0166FF] justify-center items-center rounded-[20px] flex gap-1 h-8">
+            <Button ref={recordBtnRef} className="bg-[#0166FF] justify-center items-center rounded-[20px] flex gap-1 h-8">
               <PlusIcon />
               Record
             </Button>

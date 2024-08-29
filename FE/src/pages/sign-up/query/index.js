@@ -3,7 +3,6 @@ import Currency from "@/components/currency";
 import { Finish } from "@/components/finish";
 import Logo from "@/components/icon/logo";
 import { Button } from "@/components/ui/button";
-import { DefaultLayout } from "@/layout";
 import { useState } from "react";
 
 const stepper = [

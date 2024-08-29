@@ -1,6 +1,5 @@
 import Form from "@/components/form";
 import { Input } from "@/components/ui/input";
-import { DefaultLayout } from "@/layout";
 import Link from "next/link";
 
 export default function SignIn() {
