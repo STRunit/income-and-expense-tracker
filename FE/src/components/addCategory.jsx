@@ -19,43 +19,44 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { House } from "./icon/add-category-icons/house";
-import { HouseLine } from "./icon/add-category-icons/houseLine";
-import { IdentificationBadge } from "./icon/add-category-icons/identificationBadge";
-import { IdentificationCard } from "./icon/add-category-icons/identificationCard";
-import { Ladder } from "./icon/add-category-icons/ladder";
-import { IntersectSquare } from "./icon/add-category-icons/interserctSquare";
-import { ImageSquare } from "./icon/add-category-icons/imageSquare";
-import { MagnifyingGlassPlus } from "./icon/add-category-icons/MagnifyingGlassPlus";
-import { Microphone } from "./icon/add-category-icons/microphone";
-import { MicrosoftExcelLogo } from "./icon/add-category-icons/MicrosoftExcelLogo";
-import { Notepad } from "./icon/add-category-icons/notepad";
-import { ListPlus } from "./icon/add-category-icons/listPlus";
-import { Leaf } from "./icon/add-category-icons/leaf";
-import { NumberFive } from "./icon/add-category-icons/numberFive";
-import { NumberCircleSeven } from "./icon/add-category-icons/numberCircleSeven";
-import { RoadHorizon } from "./icon/add-category-icons/roadHorizon";
-import { HourglassSimpleMedium } from "./icon/add-category-icons/hourglassSimpleMedium";
-import { AnchorSimple } from "./icon/add-category-icons/anchorSimple";
-import { BezierCurve } from "./icon/add-category-icons/bezierCurve";
-import { Exclude } from "./icon/add-category-icons/exclude";
-import { Vignette } from "./icon/add-category-icons/vignette";
-import { Baseball } from "./icon/add-category-icons/baseball";
-import { Question } from "./icon/add-category-icons/question";
-import { Exam } from "./icon/add-category-icons/exam";
-import { Watch } from "./icon/add-category-icons/watch";
-import { GlobeSimple } from "./icon/add-category-icons/globeSimple";
-import { OrangeSlice } from "./icon/add-category-icons/orangeSlice";
-import { Peace } from "./icon/add-category-icons/peace";
-import { ToiletPaper } from "./icon/add-category-icons/toiletPaper";
-import { Pencil } from "./icon/add-category-icons/pencil";
-import { BlueCircle } from "./icon/add-category-icons/blueCircle";
-import { SkyBlueCircle } from "./icon/add-category-icons/skyBlueCircle";
-import { GreenCircle } from "./icon/add-category-icons/greenCircle";
-import { YellowCircle } from "./icon/add-category-icons/yellowCircle";
-import { OrangeCircle } from "./icon/add-category-icons/orangeCircle";
-import { PurpleCircle } from "./icon/add-category-icons/purpleCircle";
-import { RedCircle } from "./icon/add-category-icons/redCircle";
+
+import {
+    House, HouseLine, IdentificationBadge,
+    IdentificationCard
+    , Ladder
+    , IntersectSquare
+    , ImageSquare
+    , MagnifyingGlassPlus
+    , Microphone
+    , MicrosoftExcelLogo
+    , Notepad
+    , ListPlus
+    , Leaf
+    , NumberFive
+    , NumberCircleSeven
+    , RoadHorizon
+    , HourglassSimpleMedium
+    , AnchorSimple
+    , BezierCurve
+    , Exclude
+    , Vignette
+    , Baseball
+    , Question
+    , Exam
+    , Watch
+    , GlobeSimple
+    , OrangeSlice
+    , Peace
+    , ToiletPaper
+    , Pencil
+    , BlueCircle
+    , SkyBlueCircle
+    , GreenCircle
+    , YellowCircle
+    , OrangeCircle
+    , PurpleCircle
+    , RedCircle
+} from "./icon/add-category-icons/house";
 
 import { Button } from "./ui/button";
 import { PlusIcon } from "./icon/plusIcon";
