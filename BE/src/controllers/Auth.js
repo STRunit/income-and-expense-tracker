@@ -16,12 +16,11 @@ export const signUp = async (req, res) => {
         VALUES ($1, $2, $3) RETURNING *`;
 
         const result = await db.query(queryText, [
-            name, 
+            name,
             email,
-            hashedPassword, 
+            hashedPassword,
         ]);
-
-        res.status(201).json(result.rows[0]);
+        res.status(200).json(result.rows[0]);
     } catch (err) {
         console.error(err);
         return res.status(404).json({ error: "Database error" });
@@ -49,7 +48,7 @@ export const signIn = async (req, res) => {
         if (!match) {
             return res.status(401).json({ error: "Invalid email or password" });
         }
-        res.status(200).json({ success: true, user: user});
+        res.status(200).json({ success: true, user: user });
 
     } catch (err) {
         console.error(err);

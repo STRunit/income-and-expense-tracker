@@ -3,6 +3,6 @@ import { signIn, signUp } from "../controllers/Auth.js";
 
 const auth = express.Router();
 
-auth.post("/signup", signUp).post("/signin", signIn);
+auth.post("/sign-up", signUp).post("/sign-in", signIn);
 
 export { auth };

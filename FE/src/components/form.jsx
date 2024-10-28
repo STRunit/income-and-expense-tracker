@@ -12,9 +12,8 @@ const Form = forwardRef(
     loginOrSignUp,
     Input,
     onSubmit,
-    ref,
     hrefValue
-  }) => {
+  }, ref) => {
     return (
       <form ref={ref} className="flex flex-col items-center gap-10 w-fit h-fit">
         <Logo />
