@@ -7,8 +7,8 @@ export const DialogContext = createContext()
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const recordBtnRef = useRef()
-  const categoryBtnRef = useRef()
+  const recordBtnRef = useRef();
+  const categoryBtnRef = useRef();
 
   const layoutRoutes = ["/dashboard", "/records"];
 
@@ -21,6 +21,8 @@ export default function App({ Component, pageProps }) {
       </DefaultLayout>
     </DialogContext.Provider>
   ) : (
-    <Component {...pageProps} />
+    <DialogContext.Provider value={{ recordBtnRef, categoryBtnRef }}>
+      <Component {...pageProps} />
+    </DialogContext.Provider>
   )
 }

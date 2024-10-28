@@ -1,11 +1,6 @@
 import express from "express";
-import {
-  createRecord,
-  deleteRecord,
-  getRecord,
-  getRecords,
-  updateRecord,
-} from "../controllers/record.js";
+import { createRecord, deleteRecord, getRecord, getRecords, updateRecord } from "../controllers/Record.js";
+
 
 const record = express.Router();
 

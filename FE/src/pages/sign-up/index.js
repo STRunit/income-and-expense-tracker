@@ -20,6 +20,7 @@ export default function SignUp() {
           buttonLabel="Sign Up"
           accountStatus="Already have account?"
           loginOrSignUp="Log In"
+          hrefValue="sign-in"
         />
       </div>
       <div className="w-1/2 bg-[#0166FF]"></div>

@@ -21,6 +21,7 @@ import { CategorySelect } from "./categorySelect";
 import { Textarea } from "./ui/textarea";
 import { useContext, useState } from "react";
 import { DialogContext } from "@/pages/_app";
+import Link from "next/link";
 
 export const Navbar = () => {
 
@@ -36,8 +37,12 @@ export const Navbar = () => {
     <div className="flex px-[120px] w-full h-fit justify-between py-4 bg-white">
       <div className="flex items-center gap-6">
         <Logo textShow={false} />
-        <span>Dashboard</span>
-        <span>Records</span>
+        <Link href="/dashboard">
+          <span>Dashboard</span>
+        </Link>
+        <Link href="/records">
+          <span>Records</span>
+        </Link>
       </div>
       <div className="flex items-center gap-6">
 
@@ -49,17 +54,17 @@ export const Navbar = () => {
             </Button>
           </DialogTrigger>
           <DialogContent className="p-0 min-w-[768px]">
-            <DialogHeader className="flex items-center justify-between border-b-[1px] px-6 py-5 items-center">
+            <DialogHeader className="flex justify-between border-b-[1px] px-6 py-5 items-center">
               <DialogTitle>Add Record</DialogTitle>
               <DialogClose>
-              <Cross2Icon className="h-4 w-4"/>
+                <Cross2Icon className="h-4 w-4" />
               </DialogClose>
             </DialogHeader>
             <div className="flex flex-start self-stretch">
               <div className="flex px-6 py-6 flex-col items-start gap-5 w-1/2">
                 <div className="w-full">
-                  <Button onClick={clickHandler} className={isClicked ? "bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2" :"bg-[#0166FF] rounded-[20px] w-1/2"}>Expense</Button>
-                  <Button onClick={clickHandler} className={isClicked ? "bg-[#16A34A] rounded-[20px] w-1/2" :"bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2"}>Income</Button>
+                  <Button onClick={clickHandler} className={isClicked ? "bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2" : "bg-[#0166FF] rounded-[20px] w-1/2"}>Expense</Button>
+                  <Button onClick={clickHandler} className={isClicked ? "bg-[#16A34A] rounded-[20px] w-1/2" : "bg-[#F3F4F6] text-[#000] rounded-[20px] w-1/2"}>Income</Button>
                 </div>
                 <div className="flex flex-col gap-[32px] w-full">
                   <div className="flex flex-col items-start gap-12 self-stretch">
@@ -69,26 +74,26 @@ export const Navbar = () => {
                     </div>
                     <div className="w-full">
                       <h4>Category</h4>
-                      <CategorySelect className="w-full"/>
+                      <CategorySelect className="w-full" />
                     </div>
                     <div className="w-full">
                       <h4>Date</h4>
-                      <DatePicker/>
+                      <DatePicker />
                     </div>
                   </div>
                   <Button type="submit" className={isClicked ? "bg-[#16A34A] rounded-[20px]" : "bg-[#0166FF] rounded-[20px]"}>Add Record</Button>
                 </div>
               </div>
               <div className="flex py-6 px-6 flex-col items-start gap-5 w-1/2">
- 
+
                 <div className="flex flex-col items-start gap-12 self-stretch">
                   <div className="flex flex-col items-start justify-center self-stretch rounded-lg">
                     <p>Name</p>
-                    <Input/>
+                    <Input />
                   </div>
                   <div className="flex flex-col items-start justify-start w-full rounded-lg">
                     <p>Note</p>
-                    <Textarea/>
+                    <Textarea />
                   </div>
                 </div>
               </div>

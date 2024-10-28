@@ -1,4 +1,3 @@
-import Balance from "@/components/balance";
 import { Card } from "@/components/card";
 import { FinanceCard } from "@/components/financeCard";
 import { DecreasingIcon } from "@/components/icon/decreasingIcon";

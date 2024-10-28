@@ -23,8 +23,8 @@ const stepper = [
 const styles = {
   primary: "w-6 h-6 text-center rounded-full bg-[#E5E7EB]",
   loaded: "w-6 h-6 text-center rounded-full bg-[#0166FF] text-white",
-  linePrimary: "h-1 w-[92px] bg-[#E5E7EB]",
-  lineLoaded: "h-1 w-[92px] bg-[#0166FF]",
+  linePrimary: "h-1 w-[100px] bg-[#E5E7EB]",
+  lineLoaded: "h-1 w-[100px] bg-[#0166FF]",
 };
 
 const Query = () => {
@@ -38,35 +38,35 @@ const Query = () => {
         <div className="flex flex-col items-center gap-12">
           <Logo />
           <div className="flex items-center">
-            {stepper.map((item, index) => (
-              <div className="flex flex-col items-center gap-1">
+            {stepper.map((item, index) => {
+              console.log(currentIndex, " <--currenIndex", index, "<--index");
+
+              return <div key={index} className="flex flex-col items-center gap-1">
                 <div className="flex items-center">
                   <p
-                    className={`${
-                      
-                      currentIndex >= index ? styles.loaded : styles.primary
-                    }`}
+                    className={`${currentIndex >= index ? styles.loaded : styles.primary}`}
                     key={index}
                   >
                     {item.number}
                   </p>
-                  <div
-                    className={`${
-                      currentIndex <= index
+                  {
+                    index >= 2 ? <></> : <div
+                      className={`${currentIndex <= index
                         ? styles.linePrimary
                         : styles.lineLoaded
-                    }`}
-                  ></div>
+                        }`}
+                    ></div>
+                  }
                 </div>
-                <div className="" key={index}>
+                <div key={index}>
                   {item.name}
                 </div>
               </div>
-            ))}
+            })}
           </div>
         </div>
 
-        <div className="">
+        <div>
           {currentIndex == 0 && <Currency />}
           {currentIndex == 1 && <Balance />}
           {currentIndex == 2 && <Finish />}

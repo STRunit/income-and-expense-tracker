@@ -102,7 +102,7 @@ export const IncomeExpensePieChart = () => {
       <div className="flex flex-col items-start gap-5 w-[300px] my-auto">
         {chartData.map((el, i) => {
           return (
-            <div className="flex items-center justify-between self-stretch text-sm text-[#111827]">
+            <div key={i} className="flex items-center justify-between self-stretch text-sm text-[#111827]">
               <div className="flex items-center w-1/3 gap-2">
                 <div className={`w-3 h-3 rounded-full bg-[${el.color}]`}></div>
                 <p>{el.category}</p>

@@ -41,6 +41,7 @@ export default function SignIn() {
           buttonLabel="Log In"
           accountStatus="Don’t have account?"
           loginOrSignUp="Sign Up"
+          hrefValue="/sign-up"
           onSubmit={handleSubmit}
           ref={formRef}
         />
