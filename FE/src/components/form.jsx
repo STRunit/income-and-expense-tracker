@@ -35,4 +35,6 @@ const Form = forwardRef(
     )
   });
 
+Form.displayName = "Form";
+
 export default Form;
